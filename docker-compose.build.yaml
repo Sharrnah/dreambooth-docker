@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  dreambooth:
+    container_name: dreambooth
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - TOKEN
+    stdin_open: true
+    tty: true
+    restart: on-failure
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [ gpu ]
+    volumes:
+      - ./app/accelerate-config.yaml:/app/examples/dreambooth/accelerate-config.yaml
+      - ./app/train.sh:/app/examples/dreambooth/train.sh
+      - ./output/:/app/examples/dreambooth/output/
+      - ./checkpoint_output/:/app/examples/dreambooth/checkpoint_output/
+      - ./instance_images/:/app/examples/dreambooth/instance_images/
+      - ./class_images/:/app/examples/dreambooth/class_images/
+      - ./cache/:/root/.cache/
