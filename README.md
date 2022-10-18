@@ -19,7 +19,7 @@ See [wsl2-setup.md](readme/wsl2-setup.md) for infos about setting up WSL2 and Do
 - edit `app/train.sh` file in a text editor.
   - only uncomment the type of training you want to use.
   - edit `INSTANCE_PROMPT` and `CLASS_PROMPT`
-- Edit settings in accelerate-config.yaml or run `docker compose -f docker-compose.build.yaml exec accelerate config --config_file=/app/examples/dreambooth/accelerate-config.yaml`
+- Edit settings in accelerate-config.yaml or run `docker compose -f docker-compose.build.yaml exec dreambooth accelerate config --config_file=/app/examples/dreambooth/accelerate-config.yaml`
   to configure training acceleration settings.
 
 ## Training
